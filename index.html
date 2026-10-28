@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>K. Muthu – Flutter & Android Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0d111d; --surface:#151b2c; --line:#252d45; --text:#e9ecf5; --muted:#98a0ba;
+  --flutter:#4fc3f7; --kotlin:#b38cff;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"DM Sans","Segoe UI",system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;font-size:16px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--flutter);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+nav b{font-family:var(--head);font-size:20px}
+nav div{display:flex;gap:18px;font-size:15px;color:var(--muted)}
+nav a{text-decoration:none}nav a:hover{color:var(--text)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:48px 0 72px}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(44px,8vw,84px);line-height:1;margin:0 0 18px;letter-spacing:-.02em}
+.role{font-family:var(--head);font-size:clamp(18px,2.6vw,24px);color:var(--muted);margin:0 0 22px}
+.role .f{color:var(--flutter)}.role .k{color:var(--kotlin)}
+.lead{max-width:56ch;color:#c3c9dc;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid var(--line)}
+.btn.main{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn:hover{border-color:var(--flutter)}
+.me{display:flex;align-items:center;gap:14px;margin-bottom:24px;color:var(--muted);font-size:15px}.me img{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid var(--line)}
+.stats{display:flex;gap:28px;margin-top:34px;color:var(--muted);font-size:14px}
+.stats b{display:block;font-family:var(--head);font-size:28px;color:var(--text)}
+/* phone */
+.phone{width:250px;height:470px;margin:0 auto;border:9px solid #1f2740;border-radius:34px;background:var(--surface);position:relative;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 30px 80px rgba(0,0,0,.5)}
+.phone::before{content:"";position:absolute;top:8px;left:50%;width:70px;height:16px;border-radius:10px;background:#0a0d16;transform:translateX(-50%)}
+.screen{padding:44px 16px 16px;height:100%}
+.screen h4{font-family:var(--head);font-size:20px;margin:0 0 6px;line-height:1.15}
+.chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;border:1px solid currentColor}
+.chip.flutter{color:var(--flutter)}.chip.kotlin{color:var(--kotlin)}
+.row{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px;font-size:13px;line-height:1.35}
+.row i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--accent,var(--flutter))}
+.screen.kotlin{--accent:var(--kotlin)}
+.bar{height:6px;border-radius:4px;background:var(--line);margin-top:18px;overflow:hidden}
+.bar span{display:block;height:100%;width:70%;background:var(--accent,var(--flutter))}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--head);font-size:clamp(28px,4vw,40px);margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 30px}
+/* projects */
+.proj{display:grid;grid-template-columns:260px 1fr;gap:28px}
+.tabs{display:flex;flex-direction:column;gap:6px}
+.tab{font:inherit;text-align:left;background:none;color:var(--muted);border:1px solid transparent;border-radius:10px;padding:10px 14px;cursor:pointer}
+.tab:hover{color:var(--text)}
+.tab[aria-selected=true]{background:var(--surface);border-color:var(--line);color:var(--text)}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+.detail h3{font-family:var(--head);font-size:26px;margin:10px 0 4px}
+.detail .who{color:var(--muted);margin:0 0 14px}
+.detail ul{margin:0;padding-left:20px}.detail li{margin:6px 0;color:#c9cfe2}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px 32px}
+.skills h3{font-family:var(--head);font-size:17px;margin:0 0 10px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:14px;padding:4px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.job{display:grid;grid-template-columns:200px 1fr;gap:28px}
+.job .when{color:var(--muted);font-size:15px}
+.job h3{font-family:var(--head);font-size:22px;margin:0}
+.job p{margin:2px 0 14px;color:var(--muted)}
+.job ul{margin:0;padding-left:20px}.job li{margin:5px 0;color:#c9cfe2}
+.edu{margin-top:44px}
+.edu h3{font-family:var(--head);font-size:20px;margin:0}
+.edu p{margin:2px 0;color:var(--muted)}
+.contact{font-family:var(--head);font-size:clamp(24px,4.5vw,44px);font-weight:700;line-height:1.25}
+.contact a{display:block;text-decoration:none;width:fit-content;border-bottom:2px solid var(--line)}
+.contact a:hover{border-color:var(--flutter)}
+footer{padding:30px 0 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;padding-top:24px}
+  .proj{grid-template-columns:1fr}
+  .tabs{flex-direction:row;overflow-x:auto;padding-bottom:6px}
+  .tab{white-space:nowrap}
+  .job{grid-template-columns:1fr;gap:6px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .screen{animation:swap .35s ease}
+  @keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><b>K. Muthu</b><div><a href="#work">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
+
+  <header class="hero">
+    <div>
+      <div class="me"><img src="photo.jpg" alt="Portrait of K. Muthu" width="88" height="88"><span>Madurai, Tamil Nadu</span></div>
+      <h1>Muthu</h1>
+      <p class="role"><span class="f">Flutter</span> and <span class="k">Android Kotlin</span> developer</p>
+      <p class="lead">I build and ship mobile apps from the first screen to the Play Store: taxi booking, food delivery, parcel tracking, loan collection and more. Based in Madurai, Tamil Nadu.</p>
+      <div class="btns">
+        <a class="btn main" href="#work">See my apps</a>
+        <a class="btn" href="Muthu_Resume.pdf" download>Download resume</a>
+        <a class="btn" href="mailto:k.muthu1809@gmail.com">Email me</a>
+      </div>
+      <div class="stats"><div><b>3+</b>years of experience</div><div><b>6</b>apps built end to end</div></div>
+    </div>
+    <div class="phone" aria-live="polite"><div class="screen" id="phoneScreen"></div></div>
+  </header>
+
+  <section id="work">
+    <h2>Projects</h2>
+    <p class="sub">Pick an app to preview it on the phone above and read what I built.</p>
+    <div class="proj">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="detail" id="detail"></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="sub">What I use every day.</p>
+    <div class="skills">
+      <div><h3>Languages</h3><div class="tags"><span>Dart</span><span>Kotlin</span></div></div>
+      <div><h3>Mobile</h3><div class="tags"><span>Flutter</span><span>Android</span><span>Responsive UI</span><span>Activities &amp; Fragments</span></div></div>
+      <div><h3>State management</h3><div class="tags"><span>Provider</span><span>GetX</span><span>BLoC</span></div></div>
+      <div><h3>Architecture</h3><div class="tags"><span>MVVM</span></div></div>
+      <div><h3>API and data</h3><div class="tags"><span>REST API</span><span>HTTP</span><span>Retrofit</span><span>JSON parsing</span><span>SharedPreferences</span></div></div>
+      <div><h3>Firebase</h3><div class="tags"><span>Authentication</span><span>Cloud Messaging</span><span>Push notifications</span></div></div>
+      <div><h3>Tools</h3><div class="tags"><span>Android Studio</span><span>Git</span><span>Postman</span><span>Google Play Console</span></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="job">
+      <div class="when">Sep 2023 – Present<br>Dindigul</div>
+      <div>
+        <h3>Mobile App Developer</h3>
+        <p>Dreamzcoder Software Solution</p>
+        <ul>
+          <li>Build Flutter and Android Kotlin apps with responsive, user-friendly screens.</li>
+          <li>Integrate REST APIs with HTTP and Retrofit, and parse JSON responses.</li>
+          <li>Organise code with MVVM and manage state with Provider, GetX and BLoC.</li>
+          <li>Add Firebase Authentication and push notifications with Cloud Messaging.</li>
+          <li>Publish and update apps on Google Play Console.</li>
+          <li>Handle bug fixing, testing and production support independently.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="edu">
+      <h3>B.Sc. Information Technology &amp; Management</h3>
+      <p>Arul Anandar College, Karumathur, Madurai</p>
+      <p>2020 – 2023 · CGPA 7.57</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Let’s talk</h2>
+    <p class="sub">Have an app idea or a role in mind? Reach out.</p>
+    <div class="contact">
+      <a href="mailto:k.muthu1809@gmail.com">k.muthu1809@gmail.com</a>
+      <a href="tel:+919787698254">+91 97876 98254</a>
+      <a href="Muthu_Resume.pdf" download>Download resume (PDF)</a>
+    </div>
+  </section>
+
+  <footer>© 2026 K. Muthu · Madurai, Tamil Nadu, India</footer>
+</div>
+
+<script>
+const P=[
+ {n:"AlterHub",t:"Tailoring & stitching app",k:"flutter",r:"End-to-end Flutter developer",f:["Customer measurement management","Stitching order management","Order status tracking","Responsive user interface"],d:"Built the tailoring and stitching app in Flutter, handling UI, features, API integration, testing, debugging and deployment."},
+ {n:"Do N Key",t:"Taxi booking app",k:"kotlin",r:"End-to-end Android developer",f:["User and driver interfaces","Live ride tracking","Notifications"],d:"Built the taxi booking app in Android Kotlin, from UI and features to API integration, testing and deployment."},
+ {n:"Redzo",t:"Food delivery app",k:"flutter",r:"End-to-end Flutter developer",f:["Restaurant listing","Food ordering","Payment features and order tracking","Notifications"],d:"Built the food ordering and delivery app in Flutter, covering the full cycle from UI to deployment."},
+ {n:"R Dhuniya",t:"Parcel delivery app",k:"kotlin",r:"End-to-end Android developer",f:["Parcel booking","Delivery tracking","Rider management","Notifications"],d:"Built the parcel booking and delivery tracking app in Android Kotlin, from UI to deployment."},
+ {n:"Field Management",t:"Field activity & data collection app",k:"flutter",r:"End-to-end Flutter developer",f:["Field activity management","Data collection","API integration","Custom UI screens"],d:"Built the field activity and data collection app in Flutter, including API integration and UI."},
+ {n:"Pannai",t:"Loan collection app",k:"kotlin",r:"End-to-end Android developer",f:["Customer details management","Collection activity management","Android UI screens"],d:"Built the loan collection app in Android Kotlin, covering customers, collections and the full release cycle."}
+];
+const tabs=document.getElementById("tabs"),detail=document.getElementById("detail"),screen=document.getElementById("phoneScreen");
+const label=k=>k==="flutter"?"Flutter":"Android Kotlin";
+function show(i){
+  const p=P[i];
+  [...tabs.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));
+  screen.className="screen "+p.k;
+  screen.innerHTML=`<h4>${p.n}</h4><span class="chip ${p.k}">${label(p.k)}</span>`+
+    p.f.map(x=>`<div class="row"><i></i>${x}</div>`).join("")+`<div class="bar"><span></span></div>`;
+  detail.innerHTML=`<span class="chip ${p.k}">${label(p.k)}</span><h3>${p.n}: ${p.t}</h3><p class="who">${p.r}</p><p>${p.d}</p><ul>`+
+    p.f.map(x=>`<li>${x}</li>`).join("")+`</ul>`;
+}
+P.forEach((p,i)=>{
+  const b=document.createElement("button");
+  b.className="tab";b.role="tab";b.textContent=p.n;
+  b.onclick=()=>show(i);tabs.appendChild(b);
+});
+show(0);
+</script>
+</body>
+</html>
